@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Data", "eShop.Data\eShop.Data.csproj", "{4962CC51-33AA-4DB1-B4D0-9A4DD72583B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Data.Shared", "eShop.Data.Shared\eShop.Data.Shared.csproj", "{7D60D421-11E4-4F8A-B02A-561B265190B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4962CC51-33AA-4DB1-B4D0-9A4DD72583B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4962CC51-33AA-4DB1-B4D0-9A4DD72583B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4962CC51-33AA-4DB1-B4D0-9A4DD72583B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4962CC51-33AA-4DB1-B4D0-9A4DD72583B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D60D421-11E4-4F8A-B02A-561B265190B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D60D421-11E4-4F8A-B02A-561B265190B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D60D421-11E4-4F8A-B02A-561B265190B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D60D421-11E4-4F8A-B02A-561B265190B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91382EDA-8B04-407F-9F99-5F08EC4CC7FF}
+	EndGlobalSection
+EndGlobal
