@@ -1,11 +1,7 @@
 ﻿
-
-
-
-
 namespace eShop.API.Extensions.Extensions;
 
-//Extension methods to use from our API CRUD methods, so we dont need to repeat this code over and over.
+//Extension methods to use on our API app instance, so we dont need to repeat this code over and over.
 public static class HttpExtensions
 {
     public static void AddEndpoint<TEntity, TPostDto, TPutDto, TGetDto>(this WebApplication app) //we dont need Delete, since it only need the Id

@@ -12,9 +12,9 @@ public class CategoryPutDTO : CategoryPostDTO
 public class CategoryGetDTO : CategoryPutDTO
 {
     //public List<FilterGetDTO>? Filters { get; set; }
-
 }
 
+//If we want to get the category objects but without the filtering, we use the following:
 public class CategorySmallGetDTO : CategoryPutDTO
 {
 }
