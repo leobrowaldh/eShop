@@ -1,8 +1,4 @@
-using AutoMapper;
-using eShop.API.DTO;
-using eShop.API.Extensions.Extensions;
-using eShop.Data.Entities;
-using eShop.Data.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,14 +49,28 @@ app.Run();
 void RegisterEndpoints()
 {
     app.AddEndpoint<Category, CategoryPostDTO, CategoryPutDTO, CategoryGetDTO>();
+    //app.MapGet($"/api/categorieswithdata", async (IDbService db) =>
+    //{
+    //    try
+    //    {
+    //        return Results.Ok(await ((CategoryDbService)db).GetCategoriesWithAllRelatedDataAsync());
+    //    }
+    //    catch
+    //    {
+    //    }
+
+    //    return Results.BadRequest($"Couldn't get the requested products of type {typeof(Product).Name}.");
+    //});
 }
 
 void RegisterServices()
 {
-    ConfigureAutoMapper();                                      //Instances will be created by dependancy injection as needed
-    builder.Services.AddScoped<IDbService, CategoryDbService>(); //a scoped instance is only allive for one request/response
-                                                                 //singelton is allive during the life of the program.
-                                                                 //CategoryDb can be interchanged with any other class that implements IDbService
+    ConfigureAutoMapper();
+    //Instances will be created by dependancy injection as needed a scoped instance is only allive for one request/response
+    //singelton is allive during the life of the program.CategoryDb can be interchanged with any other class that implements IDbService
+    //when the program asks for a IdbService, in this situation, it will get a CategoryDbService, that is what the code is saying.
+    builder.Services.AddScoped<IDbService, CategoryDbService>(); 
+                                                                 
 }
 
 void ConfigureAutoMapper()
