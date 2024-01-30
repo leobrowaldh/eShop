@@ -77,4 +77,14 @@ public class DbService : IDbService
             foreach (var name in navigationPropertyNames)
                 _db.Set<TEntity>().Include(name).Load();
     }
+
+    public void Update<TEntity, TDto>(TDto dto)
+   where TEntity : class, IEntity where TDto : class
+    {
+        // Note that this method isn't asynchronous because Update modifies
+        // an already exisiting object in memory, which is very fast.
+        var entity = _mapper.Map<TEntity>(dto);
+        _db.Set<TEntity>().Update(entity);
+    }
+
 }

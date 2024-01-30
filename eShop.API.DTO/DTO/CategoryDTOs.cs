@@ -12,6 +12,7 @@ public class CategoryPutDTO : CategoryPostDTO
 public class CategoryGetDTO : CategoryPutDTO
 {
     //public List<FilterGetDTO>? Filters { get; set; }
+    public List<ProductGetDTO>? Products { get; set; }
 }
 
 //If we want to get the category objects but without the filtering, we use the following:

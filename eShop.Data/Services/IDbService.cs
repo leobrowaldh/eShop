@@ -17,4 +17,8 @@ public interface IDbService
     Task<TEntity> AddAsync<TEntity, TDto>(TDto dto)
             where TEntity : class
             where TDto : class;
+
+    void Update<TEntity, TDto>(TDto dto)
+        where TEntity : class, IEntity
+        where TDto : class;
 }

@@ -12,8 +12,8 @@ public static class HttpExtensions
         var node = typeof(TEntity).Name.ToLower();
         app.MapGet($"/api/{node}s/" + "{id}", HttpSingleAsync<TEntity, TGetDto>);
         app.MapGet($"/api/{node}s", HttpGetAsync<TEntity, TGetDto>);
-        //app.MapPost($"/api/{node}s", HttpPostAsync<TEntity, TPostDto>);
-        //app.MapPut($"/api/{node}s/" + "{id}", HttpPutAsync<TEntity, TPutDto>);
+        app.MapPost($"/api/{node}s", HttpPostAsync<TEntity, TPostDto>);
+        app.MapPut($"/api/{node}s/" + "{id}", HttpPutAsync<TEntity, TPutDto>);
         app.MapDelete($"/api/{node}s/" + "{id}", HttpDeleteAsync<TEntity>);
     }
     //These are for the many to many tables only, they hade no singular Id, and no Entity, different handling required.
@@ -86,4 +86,39 @@ public static class HttpExtensions
 
         return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.");
     }
+
+    public static async Task<IResult> HttpPostAsync<TEntity, TPostDto>(this IDbService db, TPostDto dto)
+   where TEntity : class, IEntity where TPostDto : class
+    {
+        try
+        {
+            var entity = await db.AddAsync<TEntity, TPostDto>(dto);
+            if (await db.SaveChangesAsync())
+            {
+                var node = typeof(TEntity).Name.ToLower();
+                return Results.Created($"/{node}s/{entity.Id}", entity);
+            }
+        }
+        catch
+        {
+        }
+
+        return Results.BadRequest($"Couldn't add the {typeof(TEntity).Name} entity.");
+    }
+
+    public static async Task<IResult> HttpPutAsync<TEntity, TPutDto>(this IDbService db, TPutDto dto)
+    where TEntity : class, IEntity where TPutDto : class
+    {
+        try
+        {
+            db.Update<TEntity, TPutDto>(dto);
+            if (await db.SaveChangesAsync()) return Results.NoContent();
+        }
+        catch
+        {
+        }
+
+        return Results.BadRequest($"Couldn't update the {typeof(TEntity).Name} entity.");
+    }
+
 }
