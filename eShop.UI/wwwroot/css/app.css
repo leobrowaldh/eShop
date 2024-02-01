@@ -31,10 +31,22 @@ h1:focus {
         content: "An error has occurred."
     }
 
-/*img.img-fluid{
-    height:200px;
+header div img, .dropdown .btn, header button {
+    height: 45px;
 }
-*/
-#product-image-1 {
-    height: 200px;
+#cart-button {
+    width: 45px;
+}
+.search-width{
+    width: 25%;
+}
+.cart-count {
+    top: 0;
+    right: 0;
+    padding: 1px 6px;
+    line-height: 1;
+    margin-right: -7px;
+    margin-top: -8px;
+    font-size: 9pt;
+    font-family:'Script MT';
 }
