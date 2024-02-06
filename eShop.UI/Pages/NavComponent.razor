@@ -1,0 +1,34 @@
+﻿
+<nav class="navbar d-flex justify-content-between mx-3">
+	<a class="navbar-brand" href="/"><img src="images/gameLogo.webp" alt="game logo" /></a>
+	<div class="input-group flex-nowrap search-width">
+		<input type="text" class="form-control rounded-0" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+		<span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
+	</div>
+	<div class="d-flex justify-content-between">
+		<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<i class="bi bi-lock"></i> Account
+			</button>
+			<ul class="dropdown-menu rounded-0">
+				<li><a class="dropdown-item" href="#">Action</a></li>
+				<li><a class="dropdown-item" href="#">Another action</a></li>
+				<li><a class="dropdown-item" href="#">Something else here</a></li>
+			</ul>
+		</div>
+		<div>
+			<div class="position-relative">
+				<!-- relative position so that the absolute positions inside this will refer to this relative as their boudary. -->
+				<button id="cart-button" type="button" class="btn btn-outline-success rounded-0"><i class="bi bi-cart"></i></button>
+				<div class="cart-count text-white rounded-circle bg-danger position-absolute">
+					3
+				</div>
+			</div>
+			<div>text</div>
+		</div>
+	</div>
+</nav>
+
+@code {
+
+}

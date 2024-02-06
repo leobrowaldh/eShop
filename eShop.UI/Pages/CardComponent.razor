@@ -1,0 +1,10 @@
+﻿<div class="product-card card text-bg-dark mx-3 rounded-0 border border-0">
+    <img src="@Card?.Image" class="card-img rounded-0" alt="...">
+    <div class="card-img-overlay">
+        <h5 class="card-title text-secondary">@Card?.Heading</h5>
+    </div>
+</div>
+
+@code {
+    [Parameter] public ProductCard? Card { get; set; }
+}
