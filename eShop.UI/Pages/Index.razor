@@ -1,11 +1,23 @@
 ﻿@page "/"
+@* dependancy injection in blazor: *@
+@inject UIService Service;
 
 <NavComponent />
 @* <MenuComponent />
 <CarouselComponent />
 <CardListComponent /> *@
 
-<div class="d-flex">
-	<AsideComponent />
-	<ProductComponent />
+<div id="viewport" class="d-flex vh-100">
+	@* making the UIService avaiable through cascade, two way communication. *@
+	<CascadingValue Value="Service" Name="Service">
+		<AsideComponent OnChange="OnChange"/>
+		<ProductComponent />
+	</CascadingValue>
 </div>
+
+@code{
+	void OnChange()
+	{
+		//no code needed, it will be called, and so trigger the html and update the page.
+	}
+}

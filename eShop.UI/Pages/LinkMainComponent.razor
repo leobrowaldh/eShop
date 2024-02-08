@@ -1,0 +1,21 @@
+﻿
+
+<article>
+	<div class="bg-primary text-white p-2"><strong>@LinkGroup?.Name</strong></div>
+	<div class="d-flex flex-column"> @* ! since ? cannot be used inside loops *@
+		@foreach(var link in LinkGroup !.LinkOptions)
+		{	//OnLinkClick will activate OnLinkPress
+			<LinkComponent LinkOption="link" OnLinkClick="OnLinkPress"/> //subscribes to LinkComponent event OnLinkClick
+		}
+	</div>
+</article>
+
+@code {
+	[Parameter] public LinkGroup? LinkGroup { get; set; }
+	[Parameter] public EventCallback<int> OnAsideCall { get; set; }
+	void OnLinkPress(int id)
+	{
+		if (OnAsideCall.HasDelegate)
+			OnAsideCall.InvokeAsync(id);
+	}
+}

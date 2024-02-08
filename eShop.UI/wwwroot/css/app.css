@@ -64,3 +64,11 @@ nav a img, .dropdown .btn, nav button {
 .product-card-list: last-child {
     margin-right: 0rem;
 }*/
+
+@media screen and (max-width: 470px){
+    /* media determines different size limits for different devices */
+    #aside-menu, #viewport {
+        height: auto !important;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,20 @@
+﻿
+@if (LinkOption is not null)
+{   //there is a @onclick for razor and a onclick for html
+    <button class="btn btn-link text-start text-decoration-none py-0 @(LinkOption.IsSelected ? "ps-0" : "ps-3")" @onclick="OnClick">
+        @if (LinkOption.IsSelected)
+        {
+            <i class="bi-caret-right"></i>
+        }
+        @LinkOption?.Name
+    </button>
+}
+@code {
+    [Parameter] public LinkOption? LinkOption { get; set; }
+    [Parameter] public EventCallback<int> OnLinkClick { get; set; }  // to subscribe tofrom outside
+    void OnClick()
+    {
+        if (OnLinkClick.HasDelegate && LinkOption is not null) //has subscriber and not null?
+            OnLinkClick.InvokeAsync(LinkOption.Id);
+    }
+}
