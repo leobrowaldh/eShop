@@ -12,7 +12,7 @@ public class UIService(CategoryHttpClient categoryHttpClient)
 			Name = "Categories",
 			LinkOptions = new List<LinkOption>()
 			{	//test data:
-			 	new LinkOption {Id = 1, Name = "Woman", IsSelected = true}, //test data
+			 	new LinkOption {Id = 1, Name = "Woman", IsSelected = true},
 			 	new LinkOption {Id = 2, Name = "Men", IsSelected = false},
 			 	new LinkOption {Id = 3, Name = "Children", IsSelected = false}
 			}
