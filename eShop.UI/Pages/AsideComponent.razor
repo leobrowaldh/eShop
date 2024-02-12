@@ -11,11 +11,22 @@
 	//cascading pass down the parameter through the Component tree, making it avaiable to every subcomponent.
 	//this service will take care of the DTO-API connection.
 	[CascadingParameter(Name = "Service")] public UIService? Service { get; set; }
-	void OnAsideCallback(int id)
+
+	async Task OnAsideCallback(int id)
 	{
-		if (OnChange.HasDelegate) //if it has a subscriber
+		if (OnChange.HasDelegate && Service is not null) //if it has a subscriber
 		{
-			OnChange.InvokeAsync();
+			await Service.OnCategoryLinkClick(id);
+			await OnChange.InvokeAsync();
+		}
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		if (Service is not null)
+		{
+			await Service.GetLinkGroup();
+			await OnChange.InvokeAsync();
 		}
 	}
 

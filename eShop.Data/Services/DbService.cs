@@ -2,6 +2,7 @@
 using AutoMapper;
 using eShop.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace eShop.Data.Services;
 
@@ -86,5 +87,20 @@ public class DbService : IDbService
         var entity = _mapper.Map<TEntity>(dto);
         _db.Set<TEntity>().Update(entity);
     }
+
+    //to use with lambda expressions to get data (delegate):
+	public IQueryable<TEntity> GetAsync<TEntity>(
+		Expression<Func<TEntity, bool>> expression)
+		where TEntity : class
+	{
+		return _db.Set<TEntity>().Where(expression);
+	}
+
+	public List<TDto> MapList<TEntity, TDto>(List<TEntity> entities)
+		where TEntity : class
+		where TDto : class
+	{
+		return _mapper.Map<List<TDto>>(entities);
+	}
 
 }
