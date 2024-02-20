@@ -19,7 +19,8 @@
 		<div>
 			<div class="position-relative">
 				<!-- relative position so that the absolute positions inside this will refer to this relative as their boudary. -->
-				<button id="cart-button" type="button" class="btn btn-outline-success rounded-0"><i class="bi bi-cart"></i></button>
+				<button data-bs-toggle="modal" data-bs-target="#cart" id="cart-button" type="button" 
+				class="btn btn-outline-success rounded-0"><i class="bi bi-cart"></i></button>
 				<div class="cart-count text-white rounded-circle bg-danger position-absolute">
 					3
 				</div>
@@ -28,6 +29,7 @@
 		</div>
 	</div>
 </nav>
+<CartComponent/>
 
 @code {
 

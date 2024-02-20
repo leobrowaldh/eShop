@@ -68,6 +68,14 @@ nav a img, .dropdown .btn, nav button {
 .product-card-list: last-child {
     margin-right: 0rem;
 }*/
+/*
+.btn-group {
+    width: 0px;
+}*/
+
+.btn-radio {
+    width: 30px;
+}
 
 @media screen and (max-width: 470px) {
     /* media determines different size limits for different devices */
@@ -76,3 +84,4 @@ nav a img, .dropdown .btn, nav button {
         flex-direction: column;
     }
 }
+

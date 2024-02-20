@@ -1,0 +1,78 @@
+﻿@using eCommerce.API.DTO
+@using eShop.API.DTO
+@using eShop.UI.Storage.Services
+@inject IStorageService Storage
+﻿<section class="d-flex flex-wrap">
+    @foreach(var product in Service!.Products)
+    {
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@product.PictureURL" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex card-footer bg-white g-0 justify-content-start">
+                @if (product.Sizes!.Count > 0)
+                {
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        @foreach (var size in product.Sizes)
+                        {
+                            <input type="radio" class="btn-check" name="btnradio" id="size-@product.Id-@size.Id" autocomplete="off" checked
+                                   @onclick="() => OnSizeClick(product, size)">
+                            <label class="d-flex flex-row justify-content-center btn btn-outline-primary btn-radio" 
+                            for="size-@product.Id-@size.Id" style="padding: 0.25rem ; font-size: 0.8rem">@size.Name.ToUpper()</label>
+                        }
+                    </div>                    
+                }
+                @if (product.Colors!.Count > 0)
+                {
+                    foreach(var color in product.Colors)
+                    {
+                        <div class="btn-group mx-2" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="color-@product.Id-@color.Id" id="color-@product.Id-@color.Id"
+                               autocomplete="off" @onclick="() => OnColorClick(product, color)"> @* syntax required to run parameters into onclick events in razor *@
+                            <label class="btn btn-sm btn-outline-primary"
+                                   style="background-color:#@color.BGColor; color:#@(color.IsSelected ? color.TextColor : color.BGColor)"
+                               for="color-@product.Id-@color.Id"><i class="bi-check"></i></label>
+                        </div>                      
+                    }
+                }
+
+                <button class="btn btn-sm btn-success" @onclick="() => AddToCart(product)"><i class="bi-cart"></i></button>
+            </div>
+
+        </div>
+    }
+</section>
+
+@code {
+    [CascadingParameter(Name = "Service")] public UIService? Service { get; set; }
+    [Parameter] public EventCallback OnChange { get; set; }
+
+    void OnColorClick(ProductGetDTO product, ColorGetDTO color)
+    {
+        //first unselect all colors:
+        product.Colors!.ForEach(c => c.IsSelected = false);
+        color.IsSelected = true;
+    }
+
+    void OnSizeClick(ProductGetDTO product, SizeGetDTO size)
+    {
+        product.Sizes!.ForEach(c => c.IsSelected = false);
+        size.IsSelected = true;
+    }
+
+    async Task AddToCart(ProductGetDTO product)
+    {
+        //await Storage.SetAsync("MyKey", product);
+        //var prod = await Storage.GetAsync<ProductGetDTO>("MyKey");
+        //await Storage.RemoveAsync("MyKey");
+
+    }
+}
