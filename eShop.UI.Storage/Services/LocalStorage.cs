@@ -6,7 +6,7 @@ namespace eShop.UI.Storage.Services;
 public class LocalStorage(ILocalStorageService localStorage) : IStorageService
 {
     //we need js library here: Blazored, to store in browser
-    public async Task<T> GetAsync<T>(string key) =>
+    public async Task<T?> GetAsync<T>(string key) =>
         await localStorage.GetItemAsync<T>(key);
 
     public async Task RemoveAsync(string key) =>

@@ -1,7 +1,8 @@
 ﻿@using eCommerce.API.DTO
 @using eShop.API.DTO
 @using eShop.UI.Storage.Services
-@inject IStorageService Storage
+@* @inject IStorageService Storage *@ @* this is another way instead of using UIService, we will use UIService *@
+
 ﻿<section class="d-flex flex-wrap">
     @foreach(var product in Service!.Products)
     {
